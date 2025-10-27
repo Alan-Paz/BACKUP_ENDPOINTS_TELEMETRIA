@@ -1,11 +1,9 @@
-#teste
-#TESTE
 {
    "graphicalViews":[
    ],
    "dataSources":[
       {
-         "xid":"DS_99254746",
+         "xid":"DS_992547",
          "type":"VIRTUAL",
          "updatePeriodType":"SECONDS",
          "enabled":true,
@@ -13,7 +11,7 @@
          "updatePeriods":10
       },
       {
-         "xid":"DS_16166346",
+         "xid":"DS_161663",
          "type":"HTTP_RECEIVER",
          "deviceIdWhiteList":[
             "*"
@@ -27,7 +25,7 @@
    ],
    "dataPoints":[
       {
-         "xid":"DP_11491846",
+         "xid":"DP_114918",
          "loggingType":"ON_CHANGE",
          "intervalLoggingPeriodType":"MINUTES",
          "intervalLoggingType":"INSTANT",
@@ -53,7 +51,7 @@
          "discardLowLimit":-1.7976931348623157E308,
          "enabled":true,
          "intervalLoggingPeriod":15,
-         "name":"BIN46",
+         "name":"BIN",
          "purgePeriod":1,
          "textRenderer":{
             "type":"PLAIN",
@@ -62,7 +60,7 @@
          "tolerance":0.0
       },
       {
-         "xid":"DP_05298146",
+         "xid":"DP_052981",
          "loggingType":"ON_CHANGE",
          "intervalLoggingPeriodType":"MINUTES",
          "intervalLoggingType":"INSTANT",
@@ -80,7 +78,7 @@
          "engineeringUnits":"",
          "chartColour":null,
          "chartRenderer":null,
-         "dataSourceXid":"DS_99254746",
+         "dataSourceXid":"DS_992547",
          "defaultCacheSize":1,
          "deviceName":"ENVIAR NODERED\/MQTT",
          "discardExtremeValues":false,
@@ -88,7 +86,7 @@
          "discardLowLimit":-1.7976931348623157E308,
          "enabled":true,
          "intervalLoggingPeriod":15,
-         "name":"INT46",
+         "name":"INT",
          "purgePeriod":1,
          "textRenderer":{
             "type":"PLAIN",
@@ -97,7 +95,7 @@
          "tolerance":0.0
       },
       {
-         "xid":"DP_60054146",
+         "xid":"DP_600541",
          "loggingType":"ON_CHANGE",
          "intervalLoggingPeriodType":"MINUTES",
          "intervalLoggingType":"INSTANT",
@@ -115,7 +113,7 @@
          "engineeringUnits":"",
          "chartColour":null,
          "chartRenderer":null,
-         "dataSourceXid":"DS_99254746",
+         "dataSourceXid":"DS_992547",
          "defaultCacheSize":1,
          "deviceName":"ENVIAR NODERED\/MQTT",
          "discardExtremeValues":false,
@@ -132,7 +130,7 @@
          "tolerance":0.0
       },
       {
-         "xid":"DP_05826046",
+         "xid":"DP_058260",
          "loggingType":"ON_CHANGE",
          "intervalLoggingPeriodType":"MINUTES",
          "intervalLoggingType":"INSTANT",
@@ -140,14 +138,14 @@
          "pointLocator":{
             "dataType":"NUMERIC",
             "binary0Value":"",
-            "parameterName":"INT46"
+            "parameterName":"INT"
          },
          "eventDetectors":[
          ],
          "engineeringUnits":"",
          "chartColour":null,
          "chartRenderer":null,
-         "dataSourceXid":"DS_16166346",
+         "dataSourceXid":"DS_161663",
          "defaultCacheSize":1,
          "deviceName":"RECEBER NODERED\/MQTT",
          "discardExtremeValues":false,
@@ -155,7 +153,7 @@
          "discardLowLimit":-1.7976931348623157E308,
          "enabled":true,
          "intervalLoggingPeriod":15,
-         "name":"INT46",
+         "name":"INT",
          "purgePeriod":1,
          "textRenderer":{
             "type":"PLAIN",
@@ -164,7 +162,7 @@
          "tolerance":0.0
       },
       {
-         "xid":"DP_56923646",
+         "xid":"DP_569236",
          "loggingType":"ON_CHANGE",
          "intervalLoggingPeriodType":"MINUTES",
          "intervalLoggingType":"INSTANT",
@@ -172,14 +170,14 @@
          "pointLocator":{
             "dataType":"BINARY",
             "binary0Value":"",
-            "parameterName":"BIN46"
+            "parameterName":"BIN"
          },
          "eventDetectors":[
          ],
          "engineeringUnits":"",
          "chartColour":null,
          "chartRenderer":null,
-         "dataSourceXid":"DS_16166346",
+         "dataSourceXid":"DS_161663",
          "defaultCacheSize":1,
          "deviceName":"RECEBER NODERED\/MQTT",
          "discardExtremeValues":false,
@@ -187,7 +185,7 @@
          "discardLowLimit":-1.7976931348623157E308,
          "enabled":true,
          "intervalLoggingPeriod":15,
-         "name":"BIN46",
+         "name":"BIN",
          "purgePeriod":1,
          "textRenderer":{
             "type":"PLAIN",
@@ -196,7 +194,7 @@
          "tolerance":0.0
       },
       {
-         "xid":"DP_72246246",
+         "xid":"DP_722462",
          "loggingType":"ON_CHANGE",
          "intervalLoggingPeriodType":"MINUTES",
          "intervalLoggingType":"INSTANT",
@@ -204,14 +202,14 @@
          "pointLocator":{
             "dataType":"NUMERIC",
             "binary0Value":"",
-            "parameterName":"FLOAT46"
+            "parameterName":"FLOAT"
          },
          "eventDetectors":[
          ],
          "engineeringUnits":"",
          "chartColour":null,
          "chartRenderer":null,
-         "dataSourceXid":"DS_16166346",
+         "dataSourceXid":"DS_161663",
          "defaultCacheSize":1,
          "deviceName":"RECEBER NODERED\/MQTT",
          "discardExtremeValues":false,
@@ -219,7 +217,7 @@
          "discardLowLimit":-1.7976931348623157E308,
          "enabled":true,
          "intervalLoggingPeriod":15,
-         "name":"FLOAT46",
+         "name":"FLOAT",
          "purgePeriod":1,
          "textRenderer":{
             "type":"PLAIN",
@@ -251,13 +249,13 @@
    ],
    "publishers":[
       {
-         "xid":"PUB_19001845",
+         "xid":"PUB_190018",
          "type":"HTTP_SENDER",
          "points":[
             {
                "dataPointId":"DP_114918",
                "includeTimestamp":false,
-               "parameterName":"BIN46"
+               "parameterName":"BIN"
             },
             {
                "dataPointId":"DP_600541",
@@ -267,7 +265,7 @@
             {
                "dataPointId":"DP_052981",
                "includeTimestamp":false,
-               "parameterName":"INT46"
+               "parameterName":"INT"
             }
          ],
          "snapshotSendPeriodType":"SECONDS",
@@ -293,7 +291,7 @@
    ],
    "watchLists":[
       {
-         "xid":"WL_75710346",
+         "xid":"WL_757103",
          "user":"admin",
          "dataPoints":[
             "DP_114918",
