@@ -1,1 +1,84 @@
 #MODELAGEM DE TABELAS RATEIO ENERGIA 
+CREATE TABLE `ENERGIA_L301F_American_Cookies_MEE181` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_point` varchar(255) DEFAULT 'L301F',
+  `data_value` int(11) DEFAULT NULL,
+  `timestamp` datetime DEFAULT current_timestamp(),
+  `Medicao` varchar(255) DEFAULT 'ENERGIA_L301F_American_Cookies_MEE181',
+  `Tipo` varchar(255) DEFAULT 'SCADA_MYSQL',
+  `Observacao` varchar(255) DEFAULT NULL,
+  `Data` datetime DEFAULT current_timestamp(),
+  `Valor` decimal(10,2) DEFAULT NULL,  
+  `Consumo` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+DELIMITER //
+
+CREATE TRIGGER update_data_value_before_update
+BEFORE UPDATE ON `ENERGIA_L301F_American_Cookies_MEE181`
+FOR EACH ROW
+BEGIN
+    SET NEW.data_value = NEW.Consumo;
+END;
+//
+
+DELIMITER ;
+
+
+
+############SCADA################
+CONFIGURAÇÃO Nome	
+ENERGIA_LIVE_FACILITIES
+Export ID (XID)	
+DS_910320
+Período de atualização	
+3
+ 
+segundo(s)
+Nome da classe do driver	
+com.mysql.jdbc.Driver
+String de conexão	
+jdbc:mysql://127.0.0.1:3306/AUTOMACAO-CFO-RATEIO-ENERGIA
+Nome de usuário	
+root
+Senha	
+Declação Select	
+SELECT * FROM ENERGIA_L301F_American_Cookies_MEE181;
+Consulta baseada em linha	 Apagar pontos para alterar este valor
+ Níveis de alarme de eventos
+Exceção de data source	
+Urgente
+ Urgente
+Exceção de declaração	
+Urgente
+ Urgente
+Teste de declaração
+Nome da coluna	Tipo da coluna	Valor
+id	INT	1
+data_point	VARCHAR	L301F
+data_value	INT	30431
+timestamp	DATETIME	2025-10-29 22:27:28.0
+Medicao	VARCHAR	ENERGIA_L301F_American_Cookies_MEE181
+Tipo	VARCHAR	SCADA_MYSQL
+Observacao	VARCHAR	
+Data	DATETIME	2025-10-29 22:17:46.0
+Valor	DECIMAL	
+Consumo	FLOAT	30431
+Data points	Habilitar todos os pontos 
+Nome	Tipo de dado	Status	Nome da coluna	
+ENERGIA_L301F_American_Cookies_MEE181	Numérico	Habilitado - clique para desabilitar	L301F	Editar
+Detalhes do data point Ajuda	Salvar Apagar
+Nome	
+ ENERGIA_L301F_American_Cookies_MEE181
+Export ID (XID)	
+ ENERGIA_L301F_American_Cookies_MEE181
+Tipo de dado	
+Numérico
+Nome da coluna	
+L301F
+Tempo de sobrescrita de coluna	
+Declaração Update	
+UPDATE ENERGIA_L301F_American_Cookies_MEE181 SET Consumo = ?, timestamp = NOW() 
+WHERE data_point = 'L301F';
