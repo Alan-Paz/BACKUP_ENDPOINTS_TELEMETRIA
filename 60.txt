@@ -191,14 +191,15 @@
          "xid": "WL_757103ABC560",
          "user": "admin",
          "dataPoints": [
-            "DP_114918ABC5",
-            "DP_600541ABC5",
-            "DP_052981ABC5",
-            "DP_569236ABC5",
-            "DP_722462ABC5",
-            "DP_058260ABC5"
+            "DP_114918ABC560",
+            "DP_600541ABC560",
+            "DP_052981ABC560",
+            "DP_569236ABC560",
+            "DP_722462ABC560",
+            "DP_058260ABC560"
          ],
          "name": "ENVIAR/RECEBER 60"
       }
    ]
+
 }
