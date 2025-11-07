@@ -1,0 +1,27 @@
+#MODELAGEM TABELA ATUALIZAÇÃO ESTOQUE ATUAL ESTOQUE_ALMOX
+
+-- Habilitar o agendador de eventos (necessário apenas uma vez no servidor)
+SET GLOBAL event_scheduler = ON;
+
+-- Criação da procedure para atualizar o estoque
+DELIMITER $$
+
+CREATE PROCEDURE sp_atualiza_estoque_automatico()
+BEGIN
+  /*
+    Atualiza a tabela estoque_atual, fazendo a correspondência pelo código do produto.
+    A quantidade em estoque_atual passa a ser igual ao ESTOQUE_MAXIMO da tabela produto.
+  */
+  UPDATE estoque_atual ea
+  JOIN produto p ON ea.codigo = p.CODIGO_PRODUTO
+  SET ea.quantidade = p.ESTOQUE_MAXIMO;
+END$$
+
+DELIMITER ;
+
+-- Criação do evento que executa automaticamente a cada 1 minuto
+CREATE EVENT IF NOT EXISTS ev_atualiza_estoque_automatico
+ON SCHEDULE EVERY 1 MINUTE
+STARTS CURRENT_TIMESTAMP
+DO
+  CALL sp_atualiza_estoque_automatico();
