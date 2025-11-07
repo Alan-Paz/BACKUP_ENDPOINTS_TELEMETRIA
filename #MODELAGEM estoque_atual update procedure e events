@@ -27,3 +27,54 @@ END$$
 
 DELIMITER ;
 
+########COMENTARIOS####################
+
+CÓDIGO CORRETO DO TRIGGER
+
+Use este código SQL para substituir o trigger atual atualiza_estoque_maximo:
+
+DELIMITER $$
+
+CREATE TRIGGER atualiza_estoque_maximo
+AFTER UPDATE ON estoque_atual
+FOR EACH ROW
+BEGIN
+  -- Atualiza o produto correspondente
+  UPDATE produto p
+  SET p.ESTOQUE_MAXIMO = NEW.quantidade
+  WHERE p.CODIGO_PRODUTO = NEW.codigo;
+END$$
+
+DELIMITER ;
+
+💡 Explicação
+
+AFTER UPDATE ON estoque_atual → o gatilho executa depois que a linha de estoque_atual foi atualizada.
+
+FOR EACH ROW → roda para cada linha alterada.
+
+NEW.quantidade → é o novo valor do campo quantidade após o UPDATE.
+
+WHERE p.CODIGO_PRODUTO = NEW.codigo → garante que só o produto com o mesmo código seja atualizado.
+
+🧹 Antes de criar, remova o antigo trigger (se existir)
+
+Execute primeiro:
+
+DROP TRIGGER IF EXISTS atualiza_estoque_maximo;
+
+
+Depois crie o novo trigger com o código acima.
+
+⚙️ Teste prático
+UPDATE estoque_atual
+SET quantidade = 500
+WHERE codigo = '#EA90013';
+
+
+Após isso, rode:
+
+SELECT CODIGO_PRODUTO, ESTOQUE_MAXIMO FROM produto WHERE CODIGO_PRODUTO = '#EA90013';
+
+
+👉 O campo ESTOQUE_MAXIMO deve estar agora com valor 500.
