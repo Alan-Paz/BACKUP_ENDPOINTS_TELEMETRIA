@@ -1,12 +1,7 @@
 #MODELAGEM TABELA ATUALIZAÇÃO ESTOQUE ATUAL ESTOQUE_ALMOX
-
--- Habilitar o agendador de eventos (necessário apenas uma vez no servidor)
-SET GLOBAL event_scheduler = ON;
-
--- Criação da procedure para atualizar o estoque
 DELIMITER $$
 
-CREATE PROCEDURE sp_atualiza_estoque_automatico()
+CREATE PROCEDURE atualiza_estoque_automatico()
 BEGIN
   /*
     Atualiza a tabela estoque_atual, fazendo a correspondência pelo código do produto.
@@ -18,10 +13,17 @@ BEGIN
 END$$
 
 DELIMITER ;
+##########################################################
 
--- Criação do evento que executa automaticamente a cada 1 minuto
-CREATE EVENT IF NOT EXISTS ev_atualiza_estoque_automatico
-ON SCHEDULE EVERY 1 MINUTE
-STARTS CURRENT_TIMESTAMP
-DO
-  CALL sp_atualiza_estoque_automatico();
+
+DELIMITER $$
+
+CREATE TRIGGER trg_produto_after_update
+AFTER UPDATE ON produto
+FOR EACH ROW
+BEGIN
+  CALL atualiza_estoque_automatico();
+END$$
+
+DELIMITER ;
+
