@@ -132,5 +132,50 @@ WHERE CODIGO_PRODUTO IN (
   '#EA90091', '#EA20838', '#EA20839', '#CH90056',
   '#CH90067', '#EA20840', '#EA90014', '#EA90305', '#EA20836'
 );
+#########################EXEMPLOS################################
 
+queue (CODIGO_PRODUTO, ESTOQUE_ATUAL), aqui está o comando SQL completo e seguro para atualizar o campo ESTOQUE_MAXIMO da tabela produto com base nos valores dessa queue.
+
+🔹 Atualização direta via JOIN
+UPDATE produto p
+JOIN queue q ON p.CODIGO_PRODUTO = q.CODIGO_PRODUTO
+SET p.ESTOQUE_MAXIMO = q.ESTOQUE_ATUAL;
+
+🔹 Verificar se atualizou corretamente
+
+Depois de executar o UPDATE, rode este SELECT para confirmar os valores:
+
+SELECT 
+  p.id_PRODUTO,
+  p.CODIGO_PRODUTO,
+  p.NOME,
+  p.ESTOQUE_MAXIMO AS novo_estoque_maximo,
+  q.ESTOQUE_ATUAL AS estoque_da_queue
+FROM produto p
+JOIN queue q ON p.CODIGO_PRODUTO = q.CODIGO_PRODUTO
+ORDER BY p.CODIGO_PRODUTO;
+
+🔹 (Opcional) Automatizar a cada minuto
+
+Se quiser que isso rode automaticamente a cada 1 minuto, você pode criar um EVENT no MySQL:
+
+SET GLOBAL event_scheduler = ON;
+
+CREATE EVENT atualiza_estoque_maximo
+ON SCHEDULE EVERY 1 MINUTE
+DO
+  UPDATE produto p
+  JOIN queue q ON p.CODIGO_PRODUTO = q.CODIGO_PRODUTO
+  SET p.ESTOQUE_MAXIMO = q.ESTOQUE_ATUAL;
+
+
+Esse evento vai sincronizar ESTOQUE_MAXIMO com ESTOQUE_ATUAL da tabela queue automaticamente, sem precisar executar o comando manualmente.
+
+💡 Resumo do que o comando faz:
+
+Faz o match entre CODIGO_PRODUTO nas duas tabelas.
+
+Atualiza produto.ESTOQUE_MAXIMO com o valor de queue.ESTOQUE_ATUAL.
+
+Pode ser rodado manualmente ou automaticamente via EVENT.
 
